@@ -11,7 +11,8 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_set_config(self):
-        matrix = Board.to_matrix('RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr')
+        flat = 'RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr'
+        matrix = Board.to_matrix(flat)
         b = Board()
         b.set_config(matrix)
         expected = matrix
@@ -20,8 +21,7 @@ class BoardTest(unittest.TestCase):
 
     def test_from_matrix_to_flat_string(self):
         expected = conf.INITIAL_BOARD
-        b = Board()
-        result = b.to_flat()
+        result = Board().to_flat()
         self.assertEqual(expected, result)
 
     def test_from_flat_string_to_matrix(self):
