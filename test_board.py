@@ -13,8 +13,10 @@ class BoardTest(unittest.TestCase):
     def test_set_config(self):
         flat = 'RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr'
         matrix = Board.to_matrix(flat)
+
         b = Board()
         b.set_config(matrix)
+
         expected = matrix
         result = b.matrix
         self.assertEqual(expected, result)
@@ -36,6 +38,20 @@ class BoardTest(unittest.TestCase):
                   'r n b q k b n r']
         expected = map(lambda x: x.split(' '), matrix)
         result = Board.to_matrix(flat)
+        self.assertEqual(expected, result)
+
+    def test_reset_board(self):
+        flat = "RNBQKBNRPPPPPPPP____________________pp___________pppp__pprnbqkbnr"
+        some_config = Board.to_matrix(flat)
+
+        b = Board()
+        b.set_config(some_config)
+        self.assertEqual(some_config, b.matrix)
+
+        b.reset()
+
+        expected = Board.to_matrix(conf.INITIAL_BOARD)
+        result = b.matrix
         self.assertEqual(expected, result)
 
 

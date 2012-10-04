@@ -3,10 +3,13 @@ import conf
 
 class Board:
     def __init__(self):
-        self.matrix = self.to_matrix(conf.INITIAL_BOARD)
+        self.reset()
 
     def set_config(self, matrix):
         self.matrix = matrix
+
+    def reset(self):
+        self.matrix = self.to_matrix(conf.INITIAL_BOARD)
 
     def to_flat(self, matrix=None):
         matrix = matrix or self.matrix
