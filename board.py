@@ -32,7 +32,10 @@ class Board:
 
     @classmethod
     def validate(self, matrix=None, flat=None):
-        flat = flat or Board.to_flat(matrix)
+        try:
+            flat = flat or Board.to_flat(matrix)
+        except:
+            raise InvalidBoard
         if len(flat) != 64 or not \
            set(flat).issubset(self.valid):
             raise InvalidBoard
@@ -42,4 +45,10 @@ class Board:
         board = '\n'.join(["%s%s %s" % ('|', '  '.join(l), '|')
                            for l in self.matrix])
         return header + board + footer
+
+
+if __name__ == '__main__':
+    b = Board()
+    b.set_config(flat=""*63)
+    print b
 

@@ -84,6 +84,10 @@ class BoardTest(unittest.TestCase):
         flat = "_"*63 + "x"
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
+    def test_invalid_matrix_raises_exception_when_validating(self):
+        matrix = [["gotcha"]]
+        self.assertRaises(InvalidBoard, Board.validate, matrix=matrix)
+
     @patch('board.Board.validate')
     def test_validation_is_done_when_set_config(self, validate):
         flat = "RNBQKBNRPPPPPPPP____________________pp___________pppp__pprnbqkbnr"
