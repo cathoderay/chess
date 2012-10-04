@@ -3,6 +3,8 @@ from exception import InvalidBoard
 
 
 class Board:
+    valid = set('rRnNbBqQkKpP_')
+
     def __init__(self):
         self.reset()
 
@@ -24,5 +26,6 @@ class Board:
 
     @classmethod
     def validate(self, flat=None):
-        if len(flat) != 64:
+        if len(flat) != 64 or not \
+           set(flat).issubset(self.valid):
             raise InvalidBoard

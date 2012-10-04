@@ -67,7 +67,11 @@ class BoardTest(unittest.TestCase):
 
     def test_flat_wrong_number_of_places(self):
         flat = "rrrRRR"
-        self.assertRaises(InvalidBoard, Board.validate, {'flat': flat})
+        self.assertRaises(InvalidBoard, Board.validate, flat=flat)
+
+    def test_invalid_char_raises_exception(self):
+        flat = "_"*63 + "x"
+        self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
 
 if __name__ == '__main__':
