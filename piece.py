@@ -1,12 +1,14 @@
 from board import Board
+from exception import OutOfBoard
 
 
 class Piece(object):
-    def __init__(self, board=Board(), position=None, color=None):
-        self.have_moved = False
+    def __init__(self, board=Board(), square=None, color=None):
+        self.has_moved = False
         self.board = board
-        self.position = position
+        self.square = square
         self.color = color
+
 
     def is_legal(self, move):
         raise NotImplementedError()

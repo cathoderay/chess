@@ -1,3 +1,6 @@
 
-class InvalidBoard:
+class InvalidBoard(Exception):
+    pass
+
+class OutOfBoard(Exception):
     pass
