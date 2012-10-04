@@ -109,6 +109,13 @@ class BoardTest(unittest.TestCase):
         result = str(Board())
         self.assertEqual(expected, result)
 
+    def test_move(self):
+        b = Board()
+        b.move((6, 0), (4, 0))
+        self.assertEqual(b.matrix[6][0], conf.BLANK)
+        self.assertEqual(b.matrix[4][0], "p")
+
+
 
 if __name__ == '__main__':
     unittest.main()

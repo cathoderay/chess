@@ -15,6 +15,11 @@ class Board:
     def reset(self):
         self.matrix = self.to_matrix(conf.INITIAL_BOARD)
 
+    def move(self, a, b):
+        piece = self.matrix[a[0]][a[1]]
+        self.matrix[a[0]][a[1]] = conf.BLANK
+        self.matrix[b[0]][b[1]] = piece
+
     @classmethod
     def to_flat(self, matrix):
         return ''.join([e for l in matrix
@@ -34,7 +39,7 @@ class Board:
 
     def __str__(self):
         header = footer = "\n%s%s%s\n" %("+--", " --"*6, " --+")
-        board = '\n'.join(["%s%s %s" % ('|', '  '.join(i), '|')
-                           for i in self.matrix])
+        board = '\n'.join(["%s%s %s" % ('|', '  '.join(l), '|')
+                           for l in self.matrix])
         return header + board + footer
 
