@@ -10,10 +10,10 @@ class Board:
 
     def set_config(self, matrix=None, flat=None):
         Board.validate(matrix=matrix, flat=flat)
-        self.matrix = matrix or Board.to_matrix(flat=flat)
+        self.matrix = matrix or Board.to_matrix(flat)
 
     def reset(self):
-        self.matrix = self.to_matrix(conf.INITIAL_BOARD)
+        self.matrix = Board.to_matrix(conf.INITIAL_BOARD)
 
     def move(self, a, b):
         piece = self.matrix[a[0]][a[1]]
