@@ -50,8 +50,7 @@ class BoardTest(unittest.TestCase):
                   'p p p p _ p p p',
                   'r n b q k b n r']
         expected = map(lambda x: x.split(' '), matrix)
-        b = Board()
-        result = b.from_flat(flat)
+        result = Board.to_matrix(flat)
         self.assertEqual(expected, result)
 
 
