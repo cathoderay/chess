@@ -66,11 +66,9 @@ class BoardTest(unittest.TestCase):
 
     def test_reset(self):
         flat = "RNBQKBNRPPPPPPPP____________________pp___________pppp__pprnbqkbnr"
-        some_config = Board.to_matrix(flat)
-
+        matrix = Board.to_matrix(flat)
         b = Board()
-        b.set_config(some_config)
-        self.assertEqual(some_config, b.matrix)
+        b.set_config(matrix=matrix)
 
         b.reset()
 
