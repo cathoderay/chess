@@ -31,3 +31,10 @@ class Board:
         if len(flat) != 64 or not \
            set(flat).issubset(self.valid):
             raise InvalidBoard
+
+    def __str__(self):
+        header = footer = "\n%s%s%s\n" %("+--", " --"*6, " --+")
+        board = '\n'.join(["%s%s %s" % ('|', '  '.join(i), '|')
+                           for i in self.matrix])
+        return header + board + footer
+

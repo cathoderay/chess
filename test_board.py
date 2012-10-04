@@ -93,6 +93,22 @@ class BoardTest(unittest.TestCase):
 
         assert validate.called
 
+    def test_string_representation(self):
+        expected = """
++-- -- -- -- -- -- -- --+
+|R  N  B  Q  K  B  N  R |
+|P  P  P  P  P  P  P  P |
+|_  _  _  _  _  _  _  _ |
+|_  _  _  _  _  _  _  _ |
+|_  _  _  _  _  _  _  _ |
+|_  _  _  _  _  _  _  _ |
+|p  p  p  p  p  p  p  p |
+|r  n  b  q  k  b  n  r |
++-- -- -- -- -- -- -- --+
+"""
+        result = str(Board())
+        self.assertEqual(expected, result)
+
 
 if __name__ == '__main__':
     unittest.main()
