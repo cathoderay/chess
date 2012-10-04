@@ -1,4 +1,5 @@
 import unittest
+from mock import patch
 
 import conf
 from board import Board
@@ -33,8 +34,17 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_from_matrix_to_flat_string(self):
+        matrix = ['R N B Q K B N R',
+                  'P P P P P P P P',
+                  '_ _ _ _ _ _ _ _',
+                  '_ _ _ _ _ _ _ _',
+                  '_ _ _ _ _ _ _ _',
+                  '_ _ _ _ _ _ _ _',
+                  'p p p p p p p p',
+                  'r n b q k b n r']
+        matrix = map(lambda x: x.split(' '), matrix)
         expected = conf.INITIAL_BOARD
-        result = Board().to_flat()
+        result = Board.to_flat(matrix)
         self.assertEqual(expected, result)
 
     def test_from_flat_string_to_matrix(self):
@@ -72,6 +82,15 @@ class BoardTest(unittest.TestCase):
     def test_invalid_char_raises_exception(self):
         flat = "_"*63 + "x"
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
+
+    @patch('board.Board.validate')
+    def test_set_config_validates_board(self, validate):
+        flat = "RNBQKBNRPPPPPPPP____________________pp___________pppp__pprnbqkbnr"
+
+        b = Board()
+        b.set_config(flat=flat)
+
+        assert validate.called
 
 
 if __name__ == '__main__':

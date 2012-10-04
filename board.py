@@ -9,13 +9,14 @@ class Board:
         self.reset()
 
     def set_config(self, matrix=None, flat=None):
-        self.matrix = matrix or self.to_matrix(flat)
+        Board.validate(matrix=matrix, flat=flat)
+        self.matrix = matrix or Board.to_matrix(flat=flat)
 
     def reset(self):
         self.matrix = self.to_matrix(conf.INITIAL_BOARD)
 
-    def to_flat(self, matrix=None):
-        matrix = matrix or self.matrix
+    @classmethod
+    def to_flat(self, matrix):
         return ''.join([e for l in matrix
                           for e in l])
 
@@ -25,7 +26,8 @@ class Board:
                 for l in xrange(8)]
 
     @classmethod
-    def validate(self, flat=None):
+    def validate(self, matrix=None, flat=None):
+        flat = flat or Board.to_flat(matrix)
         if len(flat) != 64 or not \
            set(flat).issubset(self.valid):
             raise InvalidBoard
