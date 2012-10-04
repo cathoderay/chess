@@ -1,7 +1,7 @@
 from board import Board
 
 
-class Piece:
+class Piece(object):
     def __init__(self, board=Board(), position=None, color=None):
         self.have_moved = False
         self.board = board
