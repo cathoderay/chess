@@ -48,7 +48,16 @@ class Board:
 
 
 if __name__ == '__main__':
+    # usage examples
     b = Board()
-    b.set_config(flat=""*63)
+    print b
+
+    b.set_config(flat="_"*63 + "R")
+    print b
+
+    b.move((7, 7), (0, 7))
+    print b
+
+    b.reset()
     print b
 

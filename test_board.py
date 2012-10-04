@@ -84,7 +84,7 @@ class BoardTest(unittest.TestCase):
         flat = "_"*63 + "x"
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
-    def test_invalid_matrix_raises_exception_when_validating(self):
+    def test_invalid_matrix_raises_exception(self):
         matrix = [["gotcha"]]
         self.assertRaises(InvalidBoard, Board.validate, matrix=matrix)
 
@@ -118,7 +118,6 @@ class BoardTest(unittest.TestCase):
         b.move((6, 0), (4, 0))
         self.assertEqual(b.matrix[6][0], conf.BLANK)
         self.assertEqual(b.matrix[4][0], "p")
-
 
 
 if __name__ == '__main__':
