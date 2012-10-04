@@ -19,13 +19,13 @@ class PieceTest(unittest.TestCase):
         result = piece.board
         self.assertEqual(expected, result)
 
-    def test_current_position(self):
+    def test_instantiate_with_position(self):
         piece = Piece(position=(7, 4))
         expected = (7, 4)
         result = piece.position
         self.assertEqual(expected, result)
 
-    def test_color(self):
+    def test_instantiate_with_color(self):
         piece = Piece(color=conf.WHITE)
         expected = conf.WHITE
         result = piece.color
