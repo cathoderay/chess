@@ -1,12 +1,13 @@
 import conf
+from exception import InvalidBoard
 
 
 class Board:
     def __init__(self):
         self.reset()
 
-    def set_config(self, matrix):
-        self.matrix = matrix
+    def set_config(self, matrix=None, flat=None):
+        self.matrix = matrix or self.to_matrix(flat)
 
     def reset(self):
         self.matrix = self.to_matrix(conf.INITIAL_BOARD)
@@ -20,3 +21,8 @@ class Board:
     def to_matrix(self, flat):
         return [list(flat[l*8:l*8+8])
                 for l in xrange(8)]
+
+    @classmethod
+    def validate(self, flat=None):
+        if len(flat) != 64:
+            raise InvalidBoard

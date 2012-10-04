@@ -2,6 +2,7 @@ import unittest
 
 import conf
 from board import Board
+from exception import InvalidBoard
 
 
 class BoardTest(unittest.TestCase):
@@ -10,14 +11,24 @@ class BoardTest(unittest.TestCase):
         result = Board().matrix
         self.assertEqual(expected, result)
 
-    def test_set_config(self):
+    def test_set_config_from_matrix(self):
         flat = 'RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr'
         matrix = Board.to_matrix(flat)
 
         b = Board()
-        b.set_config(matrix)
+        b.set_config(matrix=matrix)
 
         expected = matrix
+        result = b.matrix
+        self.assertEqual(expected, result)
+
+    def test_set_config_from_flat(self):
+        flat = 'RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr'
+
+        b = Board()
+        b.set_config(flat=flat)
+
+        expected = Board.to_matrix(flat)
         result = b.matrix
         self.assertEqual(expected, result)
 
@@ -53,6 +64,10 @@ class BoardTest(unittest.TestCase):
         expected = Board.to_matrix(conf.INITIAL_BOARD)
         result = b.matrix
         self.assertEqual(expected, result)
+
+    def test_flat_wrong_number_of_places(self):
+        flat = "rrrRRR"
+        self.assertRaises(InvalidBoard, Board.validate, {'flat': flat})
 
 
 if __name__ == '__main__':
