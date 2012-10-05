@@ -12,5 +12,5 @@ class Piece(object):
     def is_legal(self, move):
         raise NotImplementedError()
 
-    def legal_moves(self):
+    def valid_moves(self):
         raise NotImplementedError()

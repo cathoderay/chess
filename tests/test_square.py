@@ -143,6 +143,17 @@ class SquareTest(unittest.TestCase):
         result = Square(0, 7).southwests()
         self.assertEqual(expected, result)
 
+    def test_sub_overload_with_tuple(self):
+        expected = Square(0, 0)
+        result = Square(1, 2) - (1, 2)
+        self.assertEqual(expected, result)
+
+    def test_add_overload_with_tuple(self):
+        expected = Square(7, 7)
+        result = Square(0, 0) + (7, 7)
+        self.assertEqual(expected, result)
+        
+
 
 if __name__ == '__main__':
     unittest.main()

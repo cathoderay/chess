@@ -34,11 +34,6 @@ class PieceTest(unittest.TestCase):
         result = piece.color
         self.assertEqual(expected, result)
 
-    def test_raise_exceptions_for_not_implemented(self):
-        piece = Piece()
-        self.assertRaises(NotImplementedError, piece.is_legal, None)
-        self.assertRaises(NotImplementedError, piece.legal_moves)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,5 @@
 import conf
+from square import Square
 from exception import InvalidBoard
 
 
@@ -20,8 +21,10 @@ class Board:
         self.matrix[a[0]][a[1]] = conf.EMPTY
         self.matrix[b[0]][b[1]] = piece
 
-    def is_empty(self, pos):
-        return self.matrix[pos[0]][pos[1]] == conf.EMPTY
+    def is_empty(self, tup):
+        if isinstance(tup, Square):
+            tup = tup.tuple
+        return self.matrix[tup[0]][tup[1]] == conf.EMPTY
 
     def notify_move(self, a, b):
         self.move(a, b)
@@ -51,6 +54,9 @@ class Board:
         board = '\n'.join(["%s%s %s" % ('|', '  '.join(l), '|')
                            for l in self.matrix])
         return header + board + footer
+
+    def __repr__(self):
+        return self.__str__()
 
 
 if __name__ == '__main__':

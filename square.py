@@ -92,5 +92,14 @@ class Square():
                self.x == other.x and \
                self.y == other.y
 
+    def __sub__(self, other):
+        return Square(self.x - other[0], self.y - other[1])
+
+    def __add__(self, other):
+        return Square(self.x + other[0], self.y + other[1])
+
     def __str__(self):
-        return "%s, %s" % (self.x, self.y)
+        return "Square(%s, %s)" % (self.x, self.y)
+
+    def __repr__(self):
+        return self.__str__()

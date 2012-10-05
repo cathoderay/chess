@@ -13,23 +13,38 @@ class PawnTest(unittest.TestCase):
         pawn = Pawn(Board(), square=Square(1, 1), color=conf.BLACK)
         assert init.called
 
-    @patch('board.Board.notify_move')
-    def test_move_forward_black(self, notify):
-        pawn = Pawn(Board(), square=Square(1, 1), color=conf.BLACK)
-        pawn.move_forward()
-        expected = Square(2, 1)
-        result = pawn.square
-        self.assertEqual(expected, result)
-        assert notify.called
-
-    @patch('board.Board.notify_move')
-    def test_move_forward_white(self, notify):
+    def test_valid_moves_initial_position(self):
         pawn = Pawn(Board(), square=Square(6, 3), color=conf.WHITE)
-        pawn.move_forward()
-        expected = Square(5, 3)
-        result = pawn.square
+        expected = [Square(5, 3), Square(4, 3)]
+        result = pawn.valid_moves()
         self.assertEqual(expected, result)
-        assert notify.called
+
+    def test_valid_moves_seventh_row(self):
+        board = Board()
+        board.set_config(flat="_"*64)
+        pawn = Pawn(board, square=Square(1, 0), color=conf.WHITE)
+        expected = [Square(0, 0)]
+        result = pawn.valid_moves()
+        self.assertEqual(expected, result)
+        
+
+    #@patch('board.Board.notify_move')
+    #def test_move_forward_black(self, notify):
+    #    pawn = Pawn(Board(), square=Square(1, 1), color=conf.BLACK)
+    #    pawn.move_forward()
+    #    expected = Square(2, 1)
+    #    result = pawn.square
+    #    self.assertEqual(expected, result)
+    #    assert notify.called
+
+    #@patch('board.Board.notify_move')
+    #def test_move_forward_white(self, notify):
+    #    pawn = Pawn(Board(), square=Square(6, 3), color=conf.WHITE)
+    #    pawn.move_forward()
+    #    expected = Square(5, 3)
+    #    result = pawn.square
+    #    self.assertEqual(expected, result)
+    #    assert notify.called
 
 
     #def test_legal_moves(self):
