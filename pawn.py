@@ -8,10 +8,11 @@ class Pawn(Piece):
         super(Pawn, self).__init__(board, square, color)
 
     def move_forward(self):
-        last_square = self.square
+        last = self.square
         if self.color == conf.WHITE:
-            self.square = self.square.north()
+            new = self.square.north()
         else:
-            self.square = self.square.south()
-        self.board.notify_move(last_square, self.square)
+            new = self.square.south()
+        self.square = new
+        self.board.notify_move(last.tuple, new.tuple)
 

@@ -87,68 +87,60 @@ class SquareTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_norths(self):
-        square = Square(6, 0)
         expected = [Square(5, 0), Square(4, 0), Square(3, 0),
                     Square(2, 0), Square(1, 0), Square(0, 0)]
 
-        result = square.norths()
+        result = Square(6, 0).norths()
         print result
         self.assertEqual(expected, result)
 
     def test_souths(self):
-        square = Square(0, 3)
         expected = [Square(1, 3), Square(2, 3), Square(3, 3),
                     Square(4, 3), Square(5, 3), Square(6, 3),
                     Square(7, 3)]
-        result = square.souths()
+        result = Square(0, 3).souths()
         self.assertEqual(expected, result)
 
     def test_wests(self):
-        square = Square(0, 7)
         expected = [Square(0, 6), Square(0, 5), Square(0, 4),
                     Square(0, 3), Square(0, 2), Square(0, 1),
                     Square(0, 0)]
-        result = square.wests()
+        result = Square(0, 7).wests()
         self.assertEqual(expected, result)
 
     def test_easts(self):
-        square = Square(0, 0)
         expected = [Square(0, 1), Square(0, 2), Square(0, 3),
                     Square(0, 4), Square(0, 5), Square(0, 6),
                     Square(0, 7)]
-        result = square.easts()
+        result = Square(0, 0).easts()
         self.assertEqual(expected, result)
 
     def test_northeasts(self):
-        square = Square(7, 0)
         expected = [Square(6, 1), Square(5, 2), Square(4, 3),
                     Square(3, 4), Square(2, 5), Square(1, 6),
                     Square(0, 7)]
-        result = square.northeasts()
+        result = Square(7, 0).northeasts()
         self.assertEqual(expected, result)
 
     def test_northwests(self):
-        square = Square(7, 7)
         expected = [Square(6, 6), Square(5, 5), Square(4, 4),
                     Square(3, 3), Square(2, 2), Square(1, 1),
                     Square(0, 0)]
-        result = square.northwests()
+        result = Square(7, 7).northwests()
         self.assertEqual(expected, result)
 
     def test_southeasts(self):
-        square = Square(0, 0)
         expected = [Square(1, 1), Square(2, 2), Square(3, 3),
                     Square(4, 4), Square(5, 5), Square(6, 6),
                     Square(7, 7)]
-        result = square.southeasts()
+        result = Square(0, 0).southeasts()
         self.assertEqual(expected, result)
 
     def test_southwests(self):
-        square = Square(0, 7)
         expected = [Square(1, 6), Square(2, 5), Square(3, 4),
                     Square(4, 3), Square(5, 2), Square(6, 1),
                     Square(7, 0)]
-        result = square.southwests()
+        result = Square(0, 7).southwests()
         self.assertEqual(expected, result)
 
 
