@@ -17,8 +17,14 @@ class Board:
 
     def move(self, a, b):
         piece = self.matrix[a[0]][a[1]]
-        self.matrix[a[0]][a[1]] = conf.BLANK
+        self.matrix[a[0]][a[1]] = conf.EMPTY
         self.matrix[b[0]][b[1]] = piece
+
+    def is_empty(self, pos):
+        return self.matrix[pos[0]][pos[1]] == conf.EMPTY
+
+    def notify_move(self, a, b):
+        self.move(a, b)
 
     @classmethod
     def to_flat(self, matrix):

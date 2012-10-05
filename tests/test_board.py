@@ -116,8 +116,18 @@ class BoardTest(unittest.TestCase):
     def test_move(self):
         b = Board()
         b.move((6, 0), (4, 0))
-        self.assertEqual(b.matrix[6][0], conf.BLANK)
+        self.assertEqual(b.matrix[6][0], conf.EMPTY)
         self.assertEqual(b.matrix[4][0], "p")
+
+    def test_is_empty(self):
+        b = Board()
+        expected = False
+        result = b.is_empty((0, 0))
+        self.assertEqual(expected, result)
+
+        expected = True
+        result = b.is_empty((3,3))
+        self.assertEqual(expected, result)
 
 
 if __name__ == '__main__':

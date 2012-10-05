@@ -1,11 +1,12 @@
-from exception import OutOfBoard
+from functools import wraps
 
 
-def check_if_is_out(func):
+def out(func):
+    @wraps(func)
     def decorated(self):
         square = func(self)
         if square.is_out_of_board():
-            raise OutOfBoard
+            return None
         return square
     return decorated
 
@@ -22,37 +23,69 @@ class Square():
                self.y < 0 or \
                self.y > 7
 
-    @check_if_is_out
-    def up(self):
+    @out
+    def north(self):
         return Square(self.x - 1, self.y)
 
-    @check_if_is_out
-    def down(self):
+    @out
+    def south(self):
         return Square(self.x + 1, self.y) 
 
-    @check_if_is_out
-    def left(self):
+    @out
+    def west(self):
         return Square(self.x, self.y - 1)
 
-    @check_if_is_out
-    def right(self):
+    @out
+    def east(self):
         return Square(self.x, self.y + 1)
 
-    @check_if_is_out
+    @out
     def northeast(self):
         return Square(self.x - 1, self.y + 1)
 
-    @check_if_is_out
+    @out
     def northwest(self):
         return Square(self.x - 1, self.y - 1)
 
-    @check_if_is_out
+    @out
     def southeast(self):
         return Square(self.x + 1, self.y + 1)
 
-    @check_if_is_out
+    @out
     def southwest(self):
         return Square(self.x + 1, self.y - 1)
+
+    def get_till_out(self, func):
+        cur = func()
+        l = []
+        while cur is not None:
+            l.append(cur)
+            cur = eval('cur.%s()' % func.func_name)
+        return l
+
+    def norths(self):
+        return self.get_till_out(self.north)
+
+    def souths(self):
+        return self.get_till_out(self.south)
+
+    def wests(self):
+        return self.get_till_out(self.west)
+
+    def easts(self):
+        return self.get_till_out(self.east)
+
+    def northeasts(self):
+        return self.get_till_out(self.northeast)
+
+    def northwests(self):
+        return self.get_till_out(self.northwest)
+
+    def southeasts(self):
+        return self.get_till_out(self.southeast)
+
+    def southwests(self):
+        return self.get_till_out(self.southwest)
 
     def __eq__(self, other):
         return isinstance(other, self.__class__) and \

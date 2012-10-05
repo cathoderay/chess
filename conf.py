@@ -1,5 +1,5 @@
 
 INITIAL_BOARD = "RNBQKBNRPPPPPPPP________________________________pppppppprnbqkbnr"
-BLANK="_"
+EMPTY="_"
 WHITE="white"
 BLACK="black"

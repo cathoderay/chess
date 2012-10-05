@@ -9,7 +9,6 @@ class Piece(object):
         self.square = square
         self.color = color
 
-
     def is_legal(self, move):
         raise NotImplementedError()
 
