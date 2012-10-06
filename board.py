@@ -62,8 +62,8 @@ class Board:
 
     def __repr__(self):
         header = footer = "\n%s%s%s\n" %("  .-", " -"*6, " -.")
-        board = '\n'.join(["%s%s%s%s" % ('%d ' % (8 - i), '|', ' '.join(l), '|')
+        board = '\n'.join(["%s |%s|" % (8 - i, ' '.join(l))
                            for i, l in enumerate(self.matrix)])
-        alpha = "%s%s\n" % (" "*3, " ".join(string.lowercase[:8]))
+        alpha = "   %s\n" % " ".join(string.lowercase[:8])
         return header + board + footer + alpha
 
