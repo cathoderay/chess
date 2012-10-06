@@ -1,6 +1,5 @@
 import conf
 from board import Board
-from exception import OutOfBoard
 
 
 class Piece(object):

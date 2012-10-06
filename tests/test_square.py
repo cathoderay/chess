@@ -1,6 +1,5 @@
 import unittest
 
-from exception import OutOfBoard
 from square import Square
 
 

@@ -4,7 +4,6 @@ import conf
 from piece import Piece
 from board import Board
 from square import Square
-from exception import OutOfBoard
 
 
 class PieceTest(unittest.TestCase):
