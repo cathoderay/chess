@@ -4,7 +4,7 @@ Chess
 It is still a WIP, just for fun. Soon -- I hope, going to be a chess engine/player. 
 
 ## Current step
-Now, I'm currently modelling the chess rules.
+Currently modelling the chess rules.
 
 ## Performance
 Don't care for a while...
