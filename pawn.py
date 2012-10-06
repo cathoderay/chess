@@ -28,8 +28,7 @@ class Pawn(Piece):
 
     def can_move_two_squares(self, pos):
         ahead = self.ahead(pos, self.color)
-        return (ahead and self.board.is_empty(ahead),
-                ahead)
+        return (ahead and self.board.is_empty(ahead), ahead)
 
     def attacking_moves(self):
         attacks = [self.northwest(), self.northeast()]
