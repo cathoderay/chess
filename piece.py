@@ -1,3 +1,4 @@
+import conf
 from board import Board
 from exception import OutOfBoard
 
@@ -8,6 +9,9 @@ class Piece(object):
         self.board = board
         self.square = square
         self.color = color
+
+    def opposite_color(self):
+        return conf.BLACK if self.color == conf.WHITE else conf.WHITE
 
     def is_legal(self, move):
         raise NotImplementedError()

@@ -26,6 +26,21 @@ class Board:
             tup = tup.tuple
         return self.matrix[tup[0]][tup[1]] == conf.EMPTY
 
+    def is_black(self, tup):
+        return self.matrix[tup[0]][tup[1]].isupper()
+
+    def is_white(self, tup):
+        return self.matrix[tup[0]][tup[1]].islower()
+
+    def color(self, tup):
+        if isinstance(tup, Square):
+            tup = tup.tuple
+        if self.is_black(tup):
+            return conf.BLACK
+        elif self.is_white(tup):
+            return conf.WHITE
+        return None
+
     def notify_move(self, a, b):
         self.move(a, b)
 

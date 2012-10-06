@@ -129,6 +129,36 @@ class BoardTest(unittest.TestCase):
         result = b.is_empty((3,3))
         self.assertEqual(expected, result)
 
+    def test_is_black(self):
+        b = Board()
+        expected = True
+        result = b.is_black((0, 0))
+        self.assertEqual(expected, result)
 
+    def test_is_white(self):
+        b = Board()
+        expected = True
+        result = b.is_white((6, 6))
+        self.assertEqual(expected, result)
+
+    def test_color_black(self):
+        b = Board()
+        expected = conf.BLACK
+        result = b.color((0, 0))
+        self.assertEqual(expected, result)
+
+    def test_color_white(self):
+        b = Board()
+        expected = conf.WHITE
+        result = b.color((7, 7))
+        self.assertEqual(expected, result)
+
+    def test_color_none(self):
+        b = Board()
+        expected = None
+        result = b.color((4, 4))
+        self.assertEqual(expected, result)
+        
+    
 if __name__ == '__main__':
     unittest.main()

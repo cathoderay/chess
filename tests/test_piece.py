@@ -34,6 +34,12 @@ class PieceTest(unittest.TestCase):
         result = piece.color
         self.assertEqual(expected, result)
 
+    def test_opposite_color(self):
+        piece = Piece(color=conf.WHITE)
+        expected = conf.BLACK
+        result = piece.opposite_color()
+        self.assertEqual(expected, result)
+
 
 if __name__ == '__main__':
     unittest.main()
