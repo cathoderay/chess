@@ -41,9 +41,6 @@ class Board:
             return conf.WHITE
         return None
 
-    def notify_move(self, a, b):
-        self.move(a, b)
-
     @classmethod
     def to_flat(self, matrix):
         return ''.join([e for l in matrix
@@ -56,34 +53,14 @@ class Board:
 
     @classmethod
     def validate(self, matrix=None, flat=None):
-        try:
-            flat = flat or Board.to_flat(matrix)
-        except:
-            raise InvalidBoard
+        flat = flat or Board.to_flat(matrix)
         if len(flat) != 64 or not \
            set(flat).issubset(self.valid):
             raise InvalidBoard
 
-    def __str__(self):
+    def __repr__(self):
         header = footer = "\n%s%s%s\n" %("+--", " --"*6, " --+")
         board = '\n'.join(["%s%s %s" % ('|', '  '.join(l), '|')
                            for l in self.matrix])
         return header + board + footer
 
-    def __repr__(self):
-        return self.__str__()
-
-
-if __name__ == '__main__':
-    # usage examples
-    b = Board()
-    print b
-
-    b.set_config(flat="_"*63 + "R")
-    print b
-
-    b.move((7, 7), (0, 7))
-    print b
-
-    b.reset()
-    print b
