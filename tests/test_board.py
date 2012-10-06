@@ -158,7 +158,3 @@ class BoardTest(unittest.TestCase):
         expected = None
         result = b.color((4, 4))
         self.assertEqual(expected, result)
-        
-    
-if __name__ == '__main__':
-    unittest.main()

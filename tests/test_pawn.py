@@ -105,7 +105,3 @@ class PawnTest(unittest.TestCase):
         expected = [Square(3, 0), Square(4, 0), Square(3, 1)]
         result = pawn.valid_moves()
         self.assertEqual(expected, result)
-
-
-if __name__ == '__main__':
-    unittest.main()

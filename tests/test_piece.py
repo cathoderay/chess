@@ -39,7 +39,3 @@ class PieceTest(unittest.TestCase):
         result = piece.opposite_color()
         self.assertEqual(expected, result)
 
-
-if __name__ == '__main__':
-    unittest.main()
-

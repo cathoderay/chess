@@ -151,8 +151,3 @@ class SquareTest(unittest.TestCase):
         expected = Square(7, 7)
         result = Square(0, 0) + (7, 7)
         self.assertEqual(expected, result)
-        
-
-
-if __name__ == '__main__':
-    unittest.main()
