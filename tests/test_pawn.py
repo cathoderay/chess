@@ -27,7 +27,7 @@ class PawnTest(unittest.TestCase):
 
     def test_valid_moves_seventh_row_white(self):
         board = Board()
-        board.set_config(flat="_"*64) # it doesn't matter much
+        board.set_config(flat=conf.EMPTY*64) # it doesn't matter much
         pawn = Pawn(board, square=Square(1, 0), color=conf.WHITE)
         expected = [Square(0, 0)]
         result = pawn.valid_moves()
@@ -35,7 +35,7 @@ class PawnTest(unittest.TestCase):
 
     def test_valid_moves_second_row_black(self):
         board = Board()
-        board.set_config(flat="_"*64) # it doesn't matter much
+        board.set_config(flat=conf.EMPTY*64) # it doesn't matter much
         pawn = Pawn(board, square=Square(6, 0), color=conf.BLACK)
         expected = [Square(7, 0)]
         result = pawn.valid_moves()

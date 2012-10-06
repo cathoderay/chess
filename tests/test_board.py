@@ -13,7 +13,7 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_set_config_from_matrix(self):
-        flat = 'RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr'
+        flat = 'RNBQKBNRPPPPPPPP....................p...........pppp.ppprnbqkbnr'
         matrix = Board.to_matrix(flat)
 
         b = Board()
@@ -24,7 +24,7 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_set_config_from_flat(self):
-        flat = 'RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr'
+        flat = 'RNBQKBNRPPPPPPPP....................p...........pppp.ppprnbqkbnr'
         matrix = Board.to_matrix(flat)
 
         b = Board()
@@ -37,10 +37,10 @@ class BoardTest(unittest.TestCase):
     def test_to_flat(self):
         matrix = ['R N B Q K B N R',
                   'P P P P P P P P',
-                  '_ _ _ _ _ _ _ _',
-                  '_ _ _ _ _ _ _ _',
-                  '_ _ _ _ _ _ _ _',
-                  '_ _ _ _ _ _ _ _',
+                  '. . . . . . . .',
+                  '. . . . . . . .',
+                  '. . . . . . . .',
+                  '. . . . . . . .',
                   'p p p p p p p p',
                   'r n b q k b n r']
         matrix = map(lambda x: x.split(' '), matrix)
@@ -50,14 +50,14 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_to_matrix(self):
-        flat = "RNBQKBNRPPPPPPPP____________________p___________pppp_ppprnbqkbnr"
+        flat = "RNBQKBNRPPPPPPPP....................p...........pppp.ppprnbqkbnr"
         matrix = ['R N B Q K B N R',
                   'P P P P P P P P',
-                  '_ _ _ _ _ _ _ _',
-                  '_ _ _ _ _ _ _ _',
-                  '_ _ _ _ p _ _ _',
-                  '_ _ _ _ _ _ _ _',
-                  'p p p p _ p p p',
+                  '. . . . . . . .',
+                  '. . . . . . . .',
+                  '. . . . p . . .',
+                  '. . . . . . . .',
+                  'p p p p . p p p',
                   'r n b q k b n r']
 
         expected = map(lambda x: x.split(' '), matrix)
@@ -65,7 +65,7 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_reset(self):
-        flat = "RNBQKBNRPPPPPPPP____________________pp___________pppp__pprnbqkbnr"
+        flat = "RNBQKBNRPPPPPPPP....................pp...........pppp..pprnbqkbnr"
         matrix = Board.to_matrix(flat)
         b = Board()
         b.set_config(matrix=matrix)
@@ -81,7 +81,7 @@ class BoardTest(unittest.TestCase):
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
     def test_invalid_chars_raises_exception(self):
-        flat = "_"*63 + "x"
+        flat = conf.EMPTY*63 + "x"
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
     def test_invalid_matrix_raises_exception(self):
@@ -99,16 +99,17 @@ class BoardTest(unittest.TestCase):
 
     def test_string_representation(self):
         expected = """
-+-- -- -- -- -- -- -- --+
-|R  N  B  Q  K  B  N  R |
-|P  P  P  P  P  P  P  P |
-|_  _  _  _  _  _  _  _ |
-|_  _  _  _  _  _  _  _ |
-|_  _  _  _  _  _  _  _ |
-|_  _  _  _  _  _  _  _ |
-|p  p  p  p  p  p  p  p |
-|r  n  b  q  k  b  n  r |
-+-- -- -- -- -- -- -- --+
+  .- - - - - - - -.
+8 |R N B Q K B N R|
+7 |P P P P P P P P|
+6 |. . . . . . . .|
+5 |. . . . . . . .|
+4 |. . . . . . . .|
+3 |. . . . . . . .|
+2 |p p p p p p p p|
+1 |r n b q k b n r|
+  .- - - - - - - -.
+   a b c d e f g h
 """
         result = str(Board())
         self.assertEqual(expected, result)

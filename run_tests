@@ -2,5 +2,5 @@
 
 FILE=coverage
 echo `date` > $FILE
+PYTHONPATH=. py.test --cov-report term-missing --cov . tests/
 PYTHONPATH=. py.test --cov-report term-missing --cov . tests/ >> $FILE
-

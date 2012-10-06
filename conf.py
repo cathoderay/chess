@@ -1,5 +1,4 @@
-
-INITIAL_BOARD = "RNBQKBNRPPPPPPPP________________________________pppppppprnbqkbnr"
-EMPTY="_"
+EMPTY="."
+INITIAL_BOARD = "RNBQKBNRPPPPPPPP%spppppppprnbqkbnr" % (EMPTY*8*4)
 WHITE="white"
 BLACK="black"
