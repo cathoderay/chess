@@ -75,7 +75,7 @@ class SquareTest(unittest.TestCase):
         result = Square(1, 1).southeast()
         self.assertEqual(expected, result)
 
-    def test_southwest_raises_exception(self):
+    def test_southwest_returns_none(self):
         expected = None
         result = Square(7, 0).southwest()
         self.assertEqual(expected, result)
