@@ -37,6 +37,15 @@ class KingTest(unittest.TestCase):
         result = king.valid_moves()
         self.assertEqual(expected, result)
 
+    def test_attacks_north(self):
+        board = Board()
+        board.clean() 
+        board.matrix[3][2] = "P"
+        king = King(board, Square(4, 2), WHITE)
+        expected = [Square(3, 2)]
+        result = king.attacking_moves()
+        self.assertEqual(expected, result)
+
     def test_valid_moves_with_other_pieces(self):
         board = Board()
         board.clean()
@@ -44,8 +53,10 @@ class KingTest(unittest.TestCase):
         board.matrix[1][2] = 'P'
         board.matrix[2][3] = 'b'
         king = King(board, Square(2, 2), WHITE)
-        expected = [Square(1, 3), Square(2, 1), Square(3, 1),
-                    Square(3, 2), Square(3, 3)]
+        expected = [Square(1, 3), Square(2, 1), Square(3, 1), 
+                    Square(3, 2),Square(3, 3), Square(1, 1),
+                    Square(1, 2)]
         result = king.valid_moves()
+        print result
         self.assertEqual(expected, result)
 
