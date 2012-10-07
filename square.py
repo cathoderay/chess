@@ -87,6 +87,17 @@ class Square():
     def southwests(self):
         return self.get_till_out(self.southwest)
 
+    def adjacents(self):
+        return filter(lambda x: x is not None,
+                       [self.northwest(),
+                        self.north(),
+                        self.northeast(),
+                        self.west(),
+                        self.east(),
+                        self.southwest(),
+                        self.south(),
+                        self.southeast()])
+
     def __eq__(self, other):
         return isinstance(other, self.__class__) and \
                self.x == other.x and \

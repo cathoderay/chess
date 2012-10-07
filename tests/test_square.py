@@ -155,3 +155,10 @@ class SquareTest(unittest.TestCase):
         expected = "Square(4, 2)"
         result = str(Square(4, 2))
         self.assertEqual(expected, result)
+
+    def test_adjacents(self):
+        expected = [Square(3, 1), Square(3, 2), Square(3, 3),
+                    Square(4, 1), Square(4, 3), Square(5, 1),
+                    Square(5, 2), Square(5, 3)]
+        result = Square(4, 2).adjacents()
+        self.assertEqual(expected, result)
