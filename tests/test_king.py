@@ -21,7 +21,7 @@ class KingTest(unittest.TestCase):
 
     def test_valid_moves_clean_board(self):
         board = Board()
-        board.set_config(flat=EMPTY*64)
+        board.clean()
         king = King(board, Square(4, 4), BLACK)
         expected = [Square(3, 3), Square(3, 4), Square(3, 5),
                     Square(4, 3), Square(4, 5),
@@ -31,7 +31,7 @@ class KingTest(unittest.TestCase):
 
     def test_valid_moves_border(self):
         board = Board()
-        board.set_config(flat=EMPTY*64)
+        board.clean()
         king = King(board, Square(0, 0), BLACK)
         expected = [Square(0, 1), Square(1, 0), Square(1, 1)]
         result = king.valid_moves()
@@ -39,7 +39,7 @@ class KingTest(unittest.TestCase):
 
     def test_valid_moves_with_other_pieces(self):
         board = Board()
-        board.set_config(flat=EMPTY*64)
+        board.clean()
         board.matrix[1][1] = 'P'
         board.matrix[1][2] = 'P'
         board.matrix[2][3] = 'b'
