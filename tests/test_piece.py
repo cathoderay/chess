@@ -39,9 +39,9 @@ class PieceTest(unittest.TestCase):
         result = piece.opposite_color()
         self.assertEqual(expected, result)
 
-    def test_is_legal_raises_not_implemented_error(self):
+    def test_is_valid_raises_not_implemented_error(self):
         piece = Piece()
-        self.assertRaises(NotImplementedError, piece.is_legal, None)
+        self.assertRaises(NotImplementedError, piece.is_valid, None)
 
     def test_valid_moves_raises_not_implemented_error(self):
         piece = Piece()

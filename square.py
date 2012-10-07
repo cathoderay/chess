@@ -98,8 +98,5 @@ class Square():
     def __add__(self, other):
         return Square(self.x + other[0], self.y + other[1])
 
-    def __str__(self):
-        return "Square(%s, %s)" % (self.x, self.y)
-
     def __repr__(self):
-        return self.__str__()
+        return "Square(%s, %s)" % (self.x, self.y)

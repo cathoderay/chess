@@ -90,7 +90,6 @@ class SquareTest(unittest.TestCase):
                     Square(2, 0), Square(1, 0), Square(0, 0)]
 
         result = Square(6, 0).norths()
-        print result
         self.assertEqual(expected, result)
 
     def test_souths(self):
@@ -150,4 +149,9 @@ class SquareTest(unittest.TestCase):
     def test_add_overload_with_tuple(self):
         expected = Square(7, 7)
         result = Square(0, 0) + (7, 7)
+        self.assertEqual(expected, result)
+
+    def test_repr(self):
+        expected = "Square(4, 2)"
+        result = str(Square(4, 2))
         self.assertEqual(expected, result)

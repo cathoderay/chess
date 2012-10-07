@@ -12,7 +12,7 @@ class Piece(object):
     def opposite_color(self):
         return conf.BLACK if self.color == conf.WHITE else conf.WHITE
 
-    def is_legal(self, move):
+    def is_valid(self, move):
         raise NotImplementedError()
 
     def valid_moves(self):
