@@ -57,6 +57,5 @@ class KingTest(unittest.TestCase):
                     Square(3, 2),Square(3, 3), Square(1, 1),
                     Square(1, 2)]
         result = king.valid_moves()
-        print result
         self.assertEqual(expected, result)
 
