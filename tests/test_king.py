@@ -13,4 +13,9 @@ class KingTest(unittest.TestCase):
         king = King(Board(), Square(4, 2), conf.WHITE)
         assert init.called
 
+    def test_valid_moves_initial_position(self):
+        king = King(Board(), Square(4, 2), conf.WHITE)
+        expected = []
+        result = king.valid_moves()
+        self.assertEqual(expected, result)
 
