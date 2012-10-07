@@ -7,11 +7,11 @@ class King(Piece):
         super(King, self).__init__(board, square, color)
 
     def attacking_moves(self):
-        return filter(lambda x: self.board.color(x) == self.opposite_color(),
+        return filter(lambda square: self.board.color(square) == self.opposite_color(),
                       self.square.adjacents())
 
     def valid_moves(self):
-        moves = filter(lambda x: self.board.is_empty(x),
+        moves = filter(lambda square: self.board.is_empty(square),
                        self.square.adjacents())
         moves.extend(self.attacking_moves())
         return moves
