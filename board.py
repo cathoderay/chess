@@ -24,7 +24,7 @@ class Board:
         self.matrix[b[0]][b[1]] = piece
 
     def clean(self):
-        self.matrix = map(lambda x: list(EMPTY*8), self.matrix)
+        self.set_config(flat=EMPTY*64)
 
     def is_empty(self, tup):
         if isinstance(tup, Square):
