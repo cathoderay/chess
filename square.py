@@ -88,7 +88,7 @@ class Square():
         return self.get_till_out(self.southwest)
 
     def adjacents(self):
-        return filter(lambda x: x is not None,
+        return filter(lambda square: square,
                        [self.northwest(),
                         self.north(),
                         self.northeast(),
