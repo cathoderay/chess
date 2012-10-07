@@ -48,3 +48,4 @@ class KingTest(unittest.TestCase):
                     Square(3, 2), Square(3, 3)]
         result = king.valid_moves()
         self.assertEqual(expected, result)
+

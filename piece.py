@@ -1,4 +1,4 @@
-import conf
+from conf import BLACK, WHITE
 from board import Board
 
 
@@ -10,10 +10,10 @@ class Piece(object):
         self.color = color
 
     def opposite_color(self):
-        return conf.BLACK if self.color == conf.WHITE else conf.WHITE
+        return BLACK if self.color == WHITE else WHITE
 
     def is_valid(self, move):
-        raise NotImplementedError()
+        return move in self.valid_moves()
 
     def valid_moves(self):
         raise NotImplementedError()
