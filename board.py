@@ -1,6 +1,6 @@
 import string
 
-import conf
+from conf import EMPTY, INITIAL_BOARD, WHITE, BLACK
 from square import Square
 from exception import InvalidBoard
 
@@ -16,17 +16,20 @@ class Board:
         self.matrix = matrix or Board.to_matrix(flat)
 
     def reset(self):
-        self.matrix = Board.to_matrix(conf.INITIAL_BOARD)
+        self.matrix = Board.to_matrix(INITIAL_BOARD)
 
     def move(self, a, b):
         piece = self.matrix[a[0]][a[1]]
-        self.matrix[a[0]][a[1]] = conf.EMPTY
+        self.matrix[a[0]][a[1]] = EMPTY
         self.matrix[b[0]][b[1]] = piece
+
+    def clean(self):
+        self.matrix = map(lambda x: list(EMPTY*8), self.matrix)
 
     def is_empty(self, tup):
         if isinstance(tup, Square):
             tup = tup.tuple
-        return self.matrix[tup[0]][tup[1]] == conf.EMPTY
+        return self.matrix[tup[0]][tup[1]] == EMPTY
 
     def is_black(self, tup):
         return self.matrix[tup[0]][tup[1]].isupper()
@@ -38,9 +41,9 @@ class Board:
         if isinstance(tup, Square):
             tup = tup.tuple
         if self.is_black(tup):
-            return conf.BLACK
+            return BLACK
         elif self.is_white(tup):
-            return conf.WHITE
+            return WHITE
         return None
 
     @classmethod

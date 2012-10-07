@@ -1,14 +1,14 @@
 import unittest
 from mock import patch
 
-import conf
+from conf import EMPTY, INITIAL_BOARD, BLACK, WHITE
 from board import Board
 from exception import InvalidBoard
 
 
 class BoardTest(unittest.TestCase):
     def test_starting_board(self):
-        expected = Board.to_matrix(conf.INITIAL_BOARD)
+        expected = Board.to_matrix(INITIAL_BOARD)
         result = Board().matrix
         self.assertEqual(expected, result)
 
@@ -45,7 +45,7 @@ class BoardTest(unittest.TestCase):
                   'r n b q k b n r']
         matrix = map(lambda x: x.split(' '), matrix)
 
-        expected = conf.INITIAL_BOARD
+        expected = INITIAL_BOARD
         result = Board.to_flat(matrix)
         self.assertEqual(expected, result)
 
@@ -72,7 +72,7 @@ class BoardTest(unittest.TestCase):
 
         b.reset()
 
-        expected = Board.to_matrix(conf.INITIAL_BOARD)
+        expected = Board.to_matrix(INITIAL_BOARD)
         result = b.matrix
         self.assertEqual(expected, result)
 
@@ -81,7 +81,7 @@ class BoardTest(unittest.TestCase):
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
     def test_invalid_chars_raises_exception(self):
-        flat = conf.EMPTY*63 + "x"
+        flat = EMPTY*63 + "x"
         self.assertRaises(InvalidBoard, Board.validate, flat=flat)
 
     def test_invalid_matrix_raises_exception(self):
@@ -90,7 +90,7 @@ class BoardTest(unittest.TestCase):
 
     @patch('board.Board.validate')
     def test_validation_is_done_when_set_config(self, validate):
-        flat = "RNBQKBNRPPPPPPPP____________________pp___________pppp__pprnbqkbnr"
+        flat = EMPTY*64
 
         b = Board()
         b.set_config(flat=flat)
@@ -117,7 +117,7 @@ class BoardTest(unittest.TestCase):
     def test_move(self):
         b = Board()
         b.move((6, 0), (4, 0))
-        self.assertEqual(b.matrix[6][0], conf.EMPTY)
+        self.assertEqual(b.matrix[6][0], EMPTY)
         self.assertEqual(b.matrix[4][0], "p")
 
     def test_is_empty(self):
@@ -144,13 +144,13 @@ class BoardTest(unittest.TestCase):
 
     def test_color_black(self):
         b = Board()
-        expected = conf.BLACK
+        expected = BLACK
         result = b.color((0, 0))
         self.assertEqual(expected, result)
 
     def test_color_white(self):
         b = Board()
-        expected = conf.WHITE
+        expected = WHITE
         result = b.color((7, 7))
         self.assertEqual(expected, result)
 
@@ -158,4 +158,11 @@ class BoardTest(unittest.TestCase):
         b = Board()
         expected = None
         result = b.color((4, 4))
+        self.assertEqual(expected, result)
+
+    def test_clean(self):
+        b = Board()
+        expected = 64
+        b.clean()
+        result = b.to_flat(b.matrix).count(EMPTY)
         self.assertEqual(expected, result)

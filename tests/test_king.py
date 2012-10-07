@@ -19,7 +19,7 @@ class KingTest(unittest.TestCase):
         result = king.valid_moves()
         self.assertEqual(expected, result)
 
-    def test_valid_moves_free_board(self):
+    def test_valid_moves_clean_board(self):
         board = Board()
         board.set_config(flat=EMPTY*64)
         king = King(board, Square(4, 4), BLACK)
