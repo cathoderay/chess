@@ -34,7 +34,7 @@ class Pawn(Piece):
         attacks = [self.northwest(), self.northeast()]
         attacks = filter(lambda a: a is not None and \
                                    not self.board.is_empty(a) and \
-                                   self.board.color(a) == self.opposite_color(),
+                                   self.board.color(a) == self.opposite_color,
                          attacks)
         return attacks
 

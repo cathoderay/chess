@@ -12,14 +12,14 @@ class Rook(Piece):
                                     sense_func())]
 
     def attacking_move(self, sense_func):
-        candidates = filter(lambda x: not self.board.is_empty(x), sense_func())
-        if len(candidates) > 0:
-            candidate = candidates[0]
-        else:
+        try:
+            candidate = filter(lambda x: not self.board.is_empty(x), 
+                               sense_func())[0]
+        except IndexError:
             return None
-        if self.opposite_color() == self.board.color(candidate):
-            return candidate
-        return None
+        return candidate \
+               if self.board.color(candidate) == self.opposite_color \
+               else None
 
     def attacking_moves(self):
         return filter(lambda x: x,

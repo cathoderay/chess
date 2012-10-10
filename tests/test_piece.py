@@ -16,7 +16,6 @@ class PieceTest(unittest.TestCase):
     def test_instantiate_with_a_board(self):
         board = Board()
         piece = Piece(board)
-
         expected = board
         result = piece.board
         self.assertEqual(expected, result)
@@ -37,7 +36,7 @@ class PieceTest(unittest.TestCase):
     def test_opposite_color(self):
         piece = Piece(color=conf.WHITE)
         expected = conf.BLACK
-        result = piece.opposite_color()
+        result = piece.opposite_color
         self.assertEqual(expected, result)
 
     def test_is_valid(self):

@@ -9,6 +9,7 @@ class Piece(object):
         self.square = square
         self.color = color
 
+    @property
     def opposite_color(self):
         return BLACK if self.color == WHITE else WHITE
 
