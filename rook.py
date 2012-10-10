@@ -7,9 +7,9 @@ class Rook(Piece):
     def __init__(self, board, square, color):
         super(Rook, self).__init__(board, square, color)
 
-    def till_piece(self, orientation_func):
+    def till_piece(self, sense_func):
        return [s for s in takewhile(lambda x: self.board.is_empty(x),
-                                    orientation_func())]
+                                    sense_func())]
 
     def attacking_move(self, sense_func):
         candidates = filter(lambda x: not self.board.is_empty(x), sense_func())
